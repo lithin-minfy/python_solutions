@@ -1,0 +1,35 @@
+#easy
+def swap_pairs(t):
+    swapped = [t[i+1] if i % 2 == 0 and i+1 < len(t) else t[i-1] if i % 2 != 0 else t[i] for i in range(len(t))]
+    return tuple(swapped)
+
+print(swap_pairs((1, 2, 3, 4)))
+print(swap_pairs((1, 2, 3)))
+
+def get_stats(numbers):
+    return (min(numbers), max(numbers), sum(numbers), sum(numbers) / len(numbers) if numbers else 0)
+
+print(get_stats([1, 2, 3, 4, 5]))
+
+from collections import namedtuple
+
+Student = namedtuple("Student", ["name", "age", "grades"])
+
+#medium
+def top_student(students):
+    return max(students, key=lambda s: sum(s.grades) / len(s.grades))
+
+alice = Student("Alice", 28, (85, 90, 95))
+bob = Student("Bob", 19, (70, 80, 90))
+charlie = Student("Charlie", 21, (90, 92, 93))
+
+print(top_student([alice, bob, charlie]))
+
+def count_coordinate_occurrences(coords):
+    coord_count = {}
+    for coord in coords:
+        coord_count[coord] = coord_count.get(coord, 0) + 1
+    return coord_count
+
+coords = [(1, 2), (3, 4), (1, 2), (5, 6), (3, 4), (1, 2)]
+print(count_coordinate_occurrences(coords))
